@@ -32,6 +32,8 @@ module ActsAsTaggableOn
 
     def remove_unused_tags
       if ActsAsTaggableOn.remove_unused_tags
+        # fixed - before this mod there was tag.taggings_count.zero? but
+        # when check that tag.taggings_count isn't decreased
         tag.destroy if tag.taggings_count - 1 == 0
       end
     end
